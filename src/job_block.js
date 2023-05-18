@@ -6,7 +6,7 @@ const JobBlock = ({ companyname, position, email }) => {
       <Text fontSize="3xl" mb={2}>{companyname}</Text>
       <Text mb={4}>{email}</Text>
     </Box>
-  );
-};
+  )
+}
 
 export default JobBlock;

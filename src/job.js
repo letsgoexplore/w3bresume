@@ -3,7 +3,7 @@ import { Box, Grid } from "@chakra-ui/react";
 import Navbar from "./Navbar";
 import JobBlock from "./job_block";
 
-const job = () => {
+const Job = () => {
   return(
     <Box>
         <Navbar />
@@ -17,5 +17,5 @@ const job = () => {
   )
 }
 
-export default job;
+export default Job;
 

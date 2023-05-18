@@ -2,7 +2,7 @@ import Navbar from "./Navbar";
 import { Box, Grid } from "@chakra-ui/react";
 import Block from "./Block";
 
-const experience = () => {
+const Experience = () => {
     const cryptopunkCount=3;
     return(
         <Box>
@@ -17,4 +17,4 @@ const experience = () => {
     )
 };
 
-export default experience
+export default Experience

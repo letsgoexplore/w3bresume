@@ -1,14 +1,14 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import experience from "./experience";
-import job from "./job";
+import Experience from "./experience";
+import Job from "./job";
 
 const AppRoutes = () => {
     return (
         <Router>
             <Routes>
-                <Route path="/" element={<experience />} />
-                <Route path="/job" element={<job />} />
+                <Route path="/" element={<Experience />} />
+                <Route path="/job" element={<Job />} />
             </Routes>
         </Router>
     )
