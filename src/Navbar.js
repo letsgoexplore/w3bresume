@@ -1,4 +1,5 @@
-import { Box, Flex, Image, Button, Text, Link, Spacer, Spacer} from "@chakra-ui/react";
+import { Box, Flex, Image, Button, Text, Link, Spacer} from "@chakra-ui/react";
+import { Navigate, useNavigate } from "react-router-dom";
 import logo from './logo.svg'; // 导入你的 logo 图片，需要将路径替换为你的 logo 图片路径
 import WalletButton from "./wallet";
 import TwitterButton from "./link_account/twitter"
