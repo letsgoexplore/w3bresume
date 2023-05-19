@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 
     
 const LOCAL_STORAGE_TWITTER_ACCESS_TOKEN = "tt"
-const BACKEND_BASE_URL = "http://localhost:3111"
+const BACKEND_BASE_URL = "http://127.0.0.1:3111"
 
 const TwitterClick = () => {
     let twitterWindow;
