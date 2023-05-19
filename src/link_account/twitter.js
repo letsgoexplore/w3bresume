@@ -1,10 +1,9 @@
 import{Button, Box, Image} from "@chakra-ui/react"
 import twitterIcon from '../asset/twitter.svg'
 import { useEffect, useState } from "react";
-
+import { BACKEND_BASE_URL } from "../constants";
     
 const LOCAL_STORAGE_TWITTER_ACCESS_TOKEN = "tt"
-const BACKEND_BASE_URL = "http://127.0.0.1:3111"
 
 const TwitterClick = () => {
     let twitterWindow;
