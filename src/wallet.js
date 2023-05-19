@@ -13,6 +13,32 @@ const WalletButton = () => {
 
         // We don't know window.web3 version, so we use our own instance of Web3
         // with the injected provider given by MetaMask
+        if (window.ethereum.chainId !== '0x5') {
+            try {
+                // Request user to switch to Goerli testnet
+                await window.ethereum.request({
+                    method: 'wallet_switchEthereumChain',
+                    params: [{ chainId: '0x5' }], 
+                });
+            } catch (switchError) {
+                // This error code means the user needs to add the Goerli network to MetaMask
+                if (switchError.code === 4902) {
+                    try {
+                        await window.ethereum.request({
+                            method: 'wallet_addEthereumChain',
+                            params: [{
+                                chainId: '0x5',
+                                rpcUrl: 'https://goerli.infura.io/v3/b573ced19e26400e8dca7b928505f329',
+                                //... any other params you need to set
+                            }],
+                        });
+                    } catch (addError) {
+                        // handle "add" error
+                    }
+                }
+                // handle other "switch" errors
+            }
+        }
         const web3 = new Web3(window.ethereum);
 
         const accounts = await web3.eth.getAccounts();

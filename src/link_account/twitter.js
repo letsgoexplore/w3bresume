@@ -21,6 +21,7 @@ const TwitterClick = () => {
     useEffect(() => {
         const token = localStorage.getItem(LOCAL_STORAGE_TWITTER_ACCESS_TOKEN);
         if (token) {
+          console.log('token:',token)
           setLoggedIn(true);
           //dispatch({ type: UPDATE_GITHUB_LOGGEDIN, isGithub: true });
         }
