@@ -1,6 +1,7 @@
 import Navbar from "./Navbar";
 import { Box, Grid } from "@chakra-ui/react";
 import Block from "./Block";
+import  WalletButton from "./wallet";
 
 const Experience = () => {
     const cryptopunkCount=3;

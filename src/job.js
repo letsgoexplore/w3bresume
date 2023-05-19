@@ -8,10 +8,10 @@ const Job = () => {
     <Box>
         <Navbar />
         <Grid templateColumns="repeat(2, 1fr)" gap="6" p="6">
-          <Block companyname="Alibaba" email="ai@ali.org" position="frontend"/>
-          <Block companyname="Meituan" email="ai@mt.org" position="backend"/>
-          <Block companyname="Tiktok" email="ai@tiktok.org" position="fullstack"/>
-          <Block companyname="Tencent" email="ai@tencent.org" position="algorithm"/>
+          <JobBlock companyname="Alibaba" email="ai@ali.org" position="frontend"/>
+          <JobBlock companyname="Meituan" email="ai@mt.org" position="backend"/>
+          <JobBlock companyname="Tiktok" email="ai@tiktok.org" position="fullstack"/>
+          <JobBlock companyname="Tencent" email="ai@tencent.org" position="algorithm"/>
         </Grid>
     </Box>
   )
