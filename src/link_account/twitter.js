@@ -35,6 +35,7 @@ const TwitterClick = () => {
             display="inline-flex"
             alignItems="center"
             justifyContent="center"
+            
         >
           {loggedIn ? (<Image opacity={"0.4"} src={twitterIcon} boxSize="50px" />): (<Image src={twitterIcon} boxSize="50px" />)}
         </Box>

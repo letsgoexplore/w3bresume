@@ -60,7 +60,7 @@ const WalletButton = () => {
 
   return (
     <Flex justifyContent="flex-end" alignItems="center">
-      <Button colorScheme='blue' color={"white"} variant="solid" onClick={connectWallet}>
+      <Button colorScheme='custom' bg='#FB6454' color={"white"} variant="solid" onClick={connectWallet}>
         {account ? truncateAddress(account) : "Connect Wallet"}
       </Button>
     </Flex>

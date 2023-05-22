@@ -8,7 +8,7 @@ import GithubButton from "./link_account/github"
 export default function Navbar() {
     const navigate = useNavigate();
     return (
-        <Flex align="center" justify="space-between" py={4} px={10} bg="teal.500" color="white" style={{ fontFamily: 'Now bold' }}>
+        <Flex align="center" justify="space-between" py={4} px={10} bg="red.100" color="red" style={{ fontFamily: 'Century Gothic', fontWeight: 'bolder'}}>
             <Flex>
                 <Box style={{marginRight: '20px'}} as="button" onClick={() => navigate('/')}>
                     <Image src={mylogo} height={"60px"}></Image>
@@ -20,9 +20,15 @@ export default function Navbar() {
             <Flex>
                 {/* <MetaMaskButton.Outline size="small">Connect with MetaMask</MetaMaskButton.Outline>
                 <Button colorScheme="teal">{walletAddress.slice(0,8)}</Button> */}
+                <Flex style={{ marginRight: '20px' }}>
                     <TwitterButton />
+                </Flex>
+                <Flex style={{ marginRight: '20px' }}>
                     <GithubButton />
+                </Flex>
+                <Flex style={{ marginRight: '20px' }}>
                     <WalletButton />
+                </Flex>               
             </Flex>
         </Flex>
     );
