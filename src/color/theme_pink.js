@@ -1,8 +1,8 @@
 import { ChakraProvider, extendTheme } from "@chakra-ui/react";
 
-const theme = extendTheme({
+const theme_pink = extendTheme({
   colors: {
-    myCustomColor: {
+    myCustomPinkColor: {
       50: "#ffffff",
       100: "#fdefef",
       200: "#fcdfdf",
@@ -19,13 +19,13 @@ const theme = extendTheme({
     Button: {
       variants: {
         customColor: {
-          bg: "myCustomColor.700",
+          bg: "myCustomPinkColor.700",
           color: "white",
           _hover: {
-            bg: "myCustomColor.800",
+            bg: "myCustomPinkColor.800",
           },
           _active: {
-            bg: "myCustomColor.900",
+            bg: "myCustomPinkColor.900",
           },
         },
       },
@@ -34,4 +34,4 @@ const theme = extendTheme({
 });
 
 
-export default theme
+export default theme_pink

@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import { Button, Flex } from "@chakra-ui/react";
 import Web3 from "web3";
 
-const WalletButton = () => {
-  const [account, setAccount] = useState("");
+
+const WalletButton = ({account, setAccount, loggedIn, setLoggedIn, buttonStates, setButtonStates}) => {
 
   const connectWallet = async () => {
     if (window.ethereum) {
@@ -44,6 +44,7 @@ const WalletButton = () => {
         const accounts = await web3.eth.getAccounts();
         console.log('Account connected: ', accounts[0]);
         setAccount(accounts[0]);
+        updateState(accounts[0])
       } catch (error) {
         console.error("User denied account access");
       }
@@ -57,7 +58,14 @@ const WalletButton = () => {
     const truncated = address.slice(0, length) + "...";
     return truncated;
   };
-
+  
+  const updateState = (account)  => {
+    if(account) {
+      setLoggedIn(true);
+      setButtonStates([1, 0, 1, 0]);
+    }
+  }
+  
   return (
     <Flex justifyContent="flex-end" alignItems="center">
       <Button colorScheme='custom' bg='#FB6454' color={"white"} variant="solid" onClick={connectWallet}>

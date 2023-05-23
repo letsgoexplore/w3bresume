@@ -4,8 +4,9 @@ import mylogo from './asset/mylogo.png'; // 导入你的 logo 图片，需要将
 import WalletButton from "./wallet";
 import TwitterButton from "./link_account/twitter"
 import GithubButton from "./link_account/github"
+import React, { useState } from "react";
 
-export default function Navbar() {
+export default function Navbar({account, setAccount, loggedIn, setLoggedIn, buttonStates, setButtonStates}) {
     const navigate = useNavigate();
     return (
         <Flex align="center" justify="space-between" py={4} px={10} bg="red.100" color="red" style={{ fontFamily: 'Century Gothic', fontWeight: 'bolder'}}>
@@ -27,7 +28,7 @@ export default function Navbar() {
                     <GithubButton />
                 </Flex>
                 <Flex style={{ marginRight: '20px' }}>
-                    <WalletButton />
+                    <WalletButton account={account} setAccount={setAccount} loggedIn={loggedIn} setLoggedIn={setLoggedIn} buttonStates={buttonStates} setButtonStates={setButtonStates}/>
                 </Flex>               
             </Flex>
         </Flex>

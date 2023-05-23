@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { Button, Input, Box, useToast, Modal, ModalOverlay, ModalContent, ModalHeader, ModalCloseButton, ModalBody, Spinner } from '@chakra-ui/react';
+import { Button, Input, Box, useToast, Modal, ModalOverlay, ModalContent, ModalHeader, ModalCloseButton, ModalBody, Spinner, ChakraProvider } from '@chakra-ui/react';
 import { MdCheckCircle } from 'react-icons/md';
+import theme_blue from './color/theme_blue';
 
-function FileUpload() {
+function FileUpload({isEligible}) {
   const [file, setFile] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
@@ -30,7 +31,14 @@ function FileUpload() {
   return (
     <Box>
       <Input type="file" onChange={handleFileChange} />
-      <Button ml={2} onClick={handleUpload}>Upload</Button>
+      <ChakraProvider theme={theme_blue}>
+        {isEligible ? (<Button variant="customColor" onClick={handleUpload} style={{fontFamily:"Century Gothic"}}>
+          {"Upload"}
+        </Button>):
+        (<Button color={"gray.200"} onClick={null} style={{fontFamily:"Century Gothic"}}>
+          {"Upload"}
+        </Button>)}        
+      </ChakraProvider>
       <Modal isOpen={isOpen} onClose={() => setIsOpen(false)}>
         <ModalOverlay />
         <ModalContent>
