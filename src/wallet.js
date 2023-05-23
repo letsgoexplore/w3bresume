@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Button, Flex } from "@chakra-ui/react";
 import Web3 from "web3";
 

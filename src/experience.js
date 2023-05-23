@@ -1,8 +1,7 @@
-import Navbar from "./Navbar";
+import Navbar from "./navbar";
 import { Box, Grid } from "@chakra-ui/react";
 import Block from "./experience_block";
 import React, { useState } from "react";
-import WalletButton from "./wallet";
 
 
 const Experience = ({account, setAccount, loggedIn, setLoggedIn, buttonStates, setButtonStates}) => {

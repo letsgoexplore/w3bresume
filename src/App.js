@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import AppRoutes from "./Routes"
-import { Box } from '@chakra-ui/react';
-
-
 
 function App() {
+  useEffect(() => {
+    console.log("execute app")
+    localStorage.clear()
+  },[])
+
   return (
     <div>
       <AppRoutes/>

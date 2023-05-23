@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Experience from "./experience";
 import Job from "./job";
+import Homepage from "./Homepage";
 
 const AppRoutes = () => {
     const [account, setAccount] = useState("");
@@ -10,8 +11,8 @@ const AppRoutes = () => {
     return (
         <Router>
             <Routes>
-                <Route path='/home' element={<></>} />
-                <Route path="/" element={<Experience account={account} setAccount={setAccount} loggedIn={loggedIn} setLoggedIn={setLoggedIn} buttonStates={buttonStates} setButtonStates={setButtonStates}/>} />
+                <Route path='/' element={<Homepage />} />
+                <Route path="/experience" element={<Experience account={account} setAccount={setAccount} loggedIn={loggedIn} setLoggedIn={setLoggedIn} buttonStates={buttonStates} setButtonStates={setButtonStates}/>} />
                 <Route path="/job" element={<Job account={account} setAccount={setAccount} loggedIn={loggedIn} setLoggedIn={setLoggedIn} buttonStates={buttonStates} setButtonStates={setButtonStates}/>} />
             </Routes>
         </Router>

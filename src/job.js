@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Box, Grid } from "@chakra-ui/react";
-import Navbar from "./Navbar";
+import Navbar from "./navbar";
 import JobBlock from "./job_block";
 
 const Job = ({account, setAccount, loggedIn, setLoggedIn, buttonStates, setButtonStates}) => {

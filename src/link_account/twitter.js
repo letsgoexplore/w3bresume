@@ -1,31 +1,72 @@
-import{Button, Box, Image} from "@chakra-ui/react"
+import { Box, Image} from "@chakra-ui/react"
 import twitterIcon from '../asset/twitter.svg'
-import { useEffect, useState } from "react";
-import { BACKEND_BASE_URL } from "../constants";
-    
-const LOCAL_STORAGE_TWITTER_ACCESS_TOKEN = "tt"
+import { useEffect, useRef, useState } from "react";
+import { HTTP_BACKEND_URL, WS_BACKEND_URL, ICON_BOX_SIZE, LOCALSTORAGE_TWITTER_LINKED, LOCALSTORAGE_TWITTER_AVATARURL } from "../constants";
 
-const TwitterClick = () => {
+const TwitterButton = () => {
     let twitterWindow;
-    const [loggedIn, setLoggedIn] = useState(false);
-    const [isTokenValid, setIsTokenValid] = useState(false);
 
-    const TwitterClick = async () => {
+    const [loggedIn, setLoggedIn] = useState(localStorage.getItem(LOCALSTORAGE_TWITTER_LINKED));
+    const [isTokenValid, setIsTokenValid] = useState(false);
+    const ws = useRef(null)
+    const twitterAvatarUrl = localStorage.getItem(LOCALSTORAGE_TWITTER_AVATARURL)
+
+    const TwitterClick = async (e) => {
+        const x = e.clientX
+        const y = e.clientY
         twitterWindow = window.open(
-            `${BACKEND_BASE_URL}/auth/twitter`,
+            `${HTTP_BACKEND_URL}/auth/twitter`,
              `_blank`,
-             `height=500,width=800`
+             `height=700,width=500,left=${x},top=${y}`
         )
+
+        // 有的时候连接不上，重启chrome就解决了，玄学
+        ws.current = new WebSocket(WS_BACKEND_URL)
+        ws.current.onopen = () => {
+            console.log("websocket is connected")
+            ws.current.send('hello')
+        }
+
+        ws.current.onmessage = (evt) => {
+            // parse message data
+            const message = JSON.parse(evt.data);
+            console.log(evt.data)
+            localStorage.setItem(LOCALSTORAGE_TWITTER_LINKED, true)
+            localStorage.setItem(LOCALSTORAGE_TWITTER_AVATARURL, message.photos[0].value)
+            setLoggedIn(true)
+        };
+
+        ws.current.onclose = () => {
+            console.log("websocket is closed");
+        };
+
     }
 
-    useEffect(() => {
-        const token = localStorage.getItem(LOCAL_STORAGE_TWITTER_ACCESS_TOKEN);
-        if (token) {
-          console.log('token:',token)
-          setLoggedIn(true);
-          //dispatch({ type: UPDATE_GITHUB_LOGGEDIN, isGithub: true });
-        }
-      });
+    // useEffect(() => {
+    //     ws.current = new WebSocket(WS_BACKEND_URL)
+    //     ws.current.onopen = () => {
+    //         console.log("websocket is connected")
+    //         ws.current.send('hello')
+    //     }
+
+    //     ws.current.onmessage = (evt) => {
+    //         // parse message data
+    //         const message = JSON.parse(evt.data);
+    //         if (message.status === 'logged_in') { // adjust this condition based on the actual message format
+    //             setLoggedIn(true);
+    //         }
+    //         console.log(evt.data)
+    //         avatarUrlRef.current = message.photos[0].value
+    //     };
+
+    //     ws.current.onclose = () => {
+    //         console.log("websocket is closed");
+    //     };
+
+    //     return ()=> {
+    //         ws.current.close()
+    //     }
+    //   });
 
     return (
         <Box as="button" onClick={TwitterClick}
@@ -35,12 +76,11 @@ const TwitterClick = () => {
             display="inline-flex"
             alignItems="center"
             justifyContent="center"
-            
         >
-          {loggedIn ? (<Image opacity={"0.4"} src={twitterIcon} boxSize="50px" />): (<Image src={twitterIcon} boxSize="50px" />)}
+          {loggedIn ? (<Image src={twitterAvatarUrl} boxSize={ICON_BOX_SIZE} />): (<Image src={twitterIcon} boxSize={ICON_BOX_SIZE} />)}
         </Box>
     );
 }
 
-export default TwitterClick;
+export default TwitterButton;
     
