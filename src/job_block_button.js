@@ -24,9 +24,9 @@ function JobBlockButton({companyname, sbtRequired, buttonStates, isEligible}) {
         closeOnBlur={false}
       >
         <PopoverTrigger>
-          <Button bg="#f49090">Apply</Button>
+          {isEligible?<Button bg="#afd2c9">Apply</Button>:<Button bg="#f49090">Apply</Button>}
         </PopoverTrigger>
-        <PopoverContent color='white' bg='#77b2a4' borderColor='#77b2a4'>
+        {isEligible ? <PopoverContent color='white' bg='#77b2a4' borderColor='#77b2a4'>
           <PopoverHeader pt={4} fontWeight='bold' border='0'>
             Apply
           </PopoverHeader>
@@ -46,7 +46,30 @@ function JobBlockButton({companyname, sbtRequired, buttonStates, isEligible}) {
           >
             <CVSendBox isEligible={isEligible}/>           
           </PopoverFooter>
-        </PopoverContent>
+        </PopoverContent> : 
+        
+        <PopoverContent color='white' bg='#f17070' borderColor='#f17070'>
+        <PopoverHeader pt={4} fontWeight='bold' border='0'>
+          Apply
+        </PopoverHeader>
+        <PopoverArrow />
+        <PopoverCloseButton />
+        <PopoverBody>
+          <Box> 
+            <JobBlockButtonBadge sbtRequired={sbtRequired} buttonStates={buttonStates}/>
+          </Box>
+        </PopoverBody>
+        <PopoverFooter
+          border='0'
+          display='flex'
+          alignItems='center'
+          justifyContent='space-between'
+          pb={4}
+        >
+          <CVSendBox isEligible={isEligible}/>           
+        </PopoverFooter>
+      </PopoverContent>}
+        
       </Popover>
     )
   }

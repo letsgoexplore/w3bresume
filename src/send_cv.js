@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, Input, Box, useToast, Modal, ModalOverlay, ModalContent, ModalHeader, ModalCloseButton, ModalBody, Spinner, ChakraProvider } from '@chakra-ui/react';
+import { Button, Input, Box, useToast, Modal, ModalOverlay, ModalContent, ModalHeader, ModalCloseButton, ModalBody, Spinner, ChakraProvider, Flex } from '@chakra-ui/react';
 import { MdCheckCircle } from 'react-icons/md';
 import theme_blue from './color/theme_blue';
 
@@ -29,27 +29,33 @@ function FileUpload({isEligible}) {
   };
 
   return (
-    <Box>
-      <Input type="file" onChange={handleFileChange} />
-      <ChakraProvider theme={theme_blue}>
-        {isEligible ? (<Button variant="customColor" onClick={handleUpload} style={{fontFamily:"Century Gothic"}}>
-          {"Upload"}
-        </Button>):
-        (<Button color={"gray.200"} onClick={null} style={{fontFamily:"Century Gothic"}}>
-          {"Upload"}
-        </Button>)}        
-      </ChakraProvider>
-      <Modal isOpen={isOpen} onClose={() => setIsOpen(false)}>
-        <ModalOverlay />
-        <ModalContent>
-          <ModalHeader>Uploading file</ModalHeader>
-          <ModalCloseButton />
-          <ModalBody>
-            {isLoading ? <Spinner /> : <MdCheckCircle />}
-          </ModalBody>
-        </ModalContent>
-      </Modal>
-    </Box>
+    <Flex>
+      <Box>
+        <Input type="file" onChange={handleFileChange} />
+        <Flex>
+          <ChakraProvider theme={theme_blue}>
+            {isEligible ? (<Button variant="customColor" onClick={handleUpload} style={{fontFamily:"Century Gothic"}}>
+              {"Upload"}
+            </Button>):
+            (<Button color={"grey"} onClick={null} style={{fontFamily:"Century Gothic"}}>
+              {"Ineligible"}
+            </Button>)}        
+          </ChakraProvider>
+        </Flex>
+        <Flex>
+          <Modal isOpen={isOpen} onClose={() => setIsOpen(false)}>
+            <ModalOverlay />
+            <ModalContent>
+              <ModalHeader>Uploading file</ModalHeader>
+              <ModalCloseButton />
+              <ModalBody>
+                {isLoading ? <Spinner /> : <MdCheckCircle />}
+              </ModalBody>
+            </ModalContent>
+          </Modal>
+        </Flex>
+      </Box>
+    </Flex>
   );
 }
 

@@ -10,7 +10,7 @@ export default function Navbar({account, setAccount, loggedIn, setLoggedIn, butt
     const navigate = useNavigate();
     return (
         <Box>
-            <Flex align="center" justify="space-between" py={4} px={10} bg="red.100" color="red" style={{ fontFamily: 'Century Gothic', fontWeight: 'bolder'}}>
+            <Flex align="center" justify="space-between" py={4} px={10} bg="red.100" color="red.600" style={{ fontFamily: 'Century Gothic', fontWeight: 'bolder'}}>
                 <Flex>
                     <Box style={{marginRight: '20px'}} as="button" onClick={() => navigate('/')}>
                         <Image src={mylogo} height={"60px"}></Image>
@@ -20,7 +20,8 @@ export default function Navbar({account, setAccount, loggedIn, setLoggedIn, butt
                             <Text fontSize={"2xl"}> Experience </Text>
                         </button>
 
-                        <Divider marginRight={"20px"} orientation="vertical" borderWidth={"2px"} borderColor={"white"} />
+                        {/* <Divider marginRight={"20px"} orientation="vertical" borderWidth={"2px"} borderColor={"red.300"} /> */}
+                        <Text style={{ marginRight: '22px' }} color="red.400" fontSize={"2xl"}>|</Text>
                         
                         <button ml={3} onClick={() => navigate('/job')}>
                             <Text fontSize={"2xl"}> Job </Text>
