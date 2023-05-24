@@ -1,5 +1,5 @@
 import { Box, Text, Button, ChakraProvider, Image} from "@chakra-ui/react";
-import ExpButton from "./gallery_button_fun";
+import GalleryButton from "./gallery_button_fun";
 import theme_pink from "./color/theme_pink"
 import theme_blue from "./color/theme_blue"
 
@@ -12,7 +12,7 @@ const Block = ({blockNum, title, comment, isClaimed, buttonStates, setButtonStat
       <Text fontSize="3xl" style={{fontFamily: 'Century Gothic'}} mb={2} position="relative" top={0} left={0}>{title}</Text>
       <Text mb={4} style={{fontFamily:'Comic Sans MS'}}>{"\"" + comment + "\""}</Text>
       <ChakraProvider theme={theme_pink}>
-        <Button variant="customColor" onClick={ExpButton(blockNum={blockNum},buttonStates={buttonStates},setButtonStates={setButtonStates})} style={{fontFamily:"Century Gothic"}}>
+        <Button variant="customColor" onClick={GalleryButton(blockNum={blockNum},buttonStates={buttonStates},setButtonStates={setButtonStates})} style={{fontFamily:"Century Gothic"}}>
           {"Claim"}
         </Button>
       </ChakraProvider>

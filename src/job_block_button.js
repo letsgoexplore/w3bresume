@@ -8,6 +8,7 @@ import {
     PopoverArrow,
     PopoverCloseButton,
     PopoverAnchor,
+    Stack,
   } from '@chakra-ui/react'
 import React, { useState } from 'react'
 import { Box, Button } from '@chakra-ui/react'
@@ -21,6 +22,7 @@ function JobBlockButton({companyname, sbtRequired, buttonStates, isEligible}) {
         initialFocusRef={initialFocusRef}
         placement='bottom'
         closeOnBlur={false}
+        spacing={5}
       >
         <PopoverTrigger>
           {isEligible?<Button bg="#afd2c9">Apply</Button>:<Button bg="#f49090">Apply</Button>}
@@ -32,9 +34,7 @@ function JobBlockButton({companyname, sbtRequired, buttonStates, isEligible}) {
           <PopoverArrow />
           <PopoverCloseButton />
           <PopoverBody>
-            <Box> 
-              <JobBlockButtonBadge sbtRequired={sbtRequired} buttonStates={buttonStates}/>
-            </Box>
+            <JobBlockButtonBadge sbtRequired={sbtRequired} buttonStates={buttonStates}/>
           </PopoverBody>
           <PopoverFooter
             border='0'
@@ -54,9 +54,7 @@ function JobBlockButton({companyname, sbtRequired, buttonStates, isEligible}) {
         <PopoverArrow />
         <PopoverCloseButton />
         <PopoverBody>
-          <Box> 
-            <JobBlockButtonBadge sbtRequired={sbtRequired} buttonStates={buttonStates}/>
-          </Box>
+          <JobBlockButtonBadge sbtRequired={sbtRequired} buttonStates={buttonStates}/>
         </PopoverBody>
         <PopoverFooter
           border='0'

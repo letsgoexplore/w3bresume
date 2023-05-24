@@ -1,4 +1,4 @@
-import { Box, Text, Image, Flex } from "@chakra-ui/react";
+import { Box, Text, Image, Flex, VStack } from "@chakra-ui/react";
 import JobBlockButton from "./job_block_button";
 import hookIcon from "./asset/hook.png"
 
@@ -18,10 +18,15 @@ const JobBlock = ({ companyname, position, email, sbtRequired, buttonStates, sal
         <Text fontSize="3xl" mb={2} style={{fontFamily: 'Century Gothic'}}>{companyname}</Text>
         <Text fontSize="3xl" mb={2} style={{fontFamily: 'Century Gothic'}}>{salary}</Text>
       </Flex>
-      <Flex><Text mb={4} style={{fontFamily:'Comic Sans MS'}}>{email}</Text></Flex>
+      <VStack align={"start"}>
+        {email.split('\n').map((item, i) => (
+          <Text key={i} mb={4} style={{fontFamily:'Comic Sans MS', whiteSpace: 'pre-line'}}>
+            {item}
+          </Text>
+        ))}
+      </VStack>
       <Flex><JobBlockButton companyname={companyname} sbtRequired={sbtRequired} buttonStates={buttonStates} isEligible={isEligible}/></Flex>
     </Box>
-
   )
   else return (
 
@@ -35,7 +40,13 @@ const JobBlock = ({ companyname, position, email, sbtRequired, buttonStates, sal
           <Text fontSize="3xl" mb={2} style={{fontFamily: 'Century Gothic'}}>{salary}</Text>
         </Flex>
       </Flex>
-      <Flex><Text mb={4} style={{fontFamily:'Comic Sans MS'}}>{email}</Text></Flex>
+      <VStack align={"start"}>
+        {email.split('\n').map((item, i) => (
+          <Text key={i} mb={4} style={{fontFamily:'Comic Sans MS', whiteSpace: 'pre-line'}}>
+            {item}
+          </Text>
+        ))}
+      </VStack>      
       <Flex><JobBlockButton companyname={companyname} sbtRequired={sbtRequired} buttonStates={buttonStates} isEligible={isEligible}/></Flex>
     </Box>
 

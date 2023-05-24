@@ -9,14 +9,13 @@ const Job = ({account, setAccount, loggedIn, setLoggedIn, buttonStates, setButto
       <Box>
         <Navbar account={account} setAccount={setAccount} loggedIn={loggedIn} setLoggedIn={setLoggedIn} buttonStates={buttonStates} setButtonStates={setButtonStates}/>
         <Grid templateColumns="repeat(2, 1fr)" gap="6" p="6">
-          <JobBlock companyname="Unipass BD" email="岗位职责：
-1、把 UniPass 在 账户抽象（AA / ERC4337）方面的技术成果推广到整个以太坊（以及其他 EVM 生态） 
-2、与行业核心开发者（比如以太坊基金会的researcher）一起，探索账户抽象（AA / 4337）的未来 
+          <JobBlock companyname="Unipass BD" email={`岗位职责：
+1、把 UniPass 在 账户抽象（AA / ERC4337）方面的技术成果推广到整个以太坊（以及其他 EVM 生态）
 3、这个岗位能够深入参与到整个以太坊及相关生态的技术发展，“谈笑皆鸿儒”就是这个岗位的日常状态  
 
 岗位要求： 
 4、需要较强的英文能力（工作沟通听说读写无障碍，有海外学习工作经验者优先）
- 5、要能够适应全球出差。" position="frontend" sbtRequired={[1,2]}  salary="￥10000-20000" buttonStates={buttonStates}/>
+5、要能够适应全球出差。`} position="frontend" sbtRequired={[1,2]}  salary="￥10000-20000" buttonStates={buttonStates}/>
           <JobBlock companyname="R labs 前端工程师" email="岗位职责：
 1、 参与前端界面设计开发，web系统PC端与移动端设计与实现 
 2、根据产品需求，配合后端人员实现产品界面和交互功能，页面维护及性能优化 

@@ -4,7 +4,7 @@ import Web3 from 'web3';
 // 你的合约的ABI
 
 
-const ExpButton = async (blockNum, buttonStates, setButtonStates) => {
+const GalleryButton = async (blockNum, buttonStates, setButtonStates) => {
   
     const contractABI = [
       {
@@ -484,4 +484,4 @@ const ExpButton = async (blockNum, buttonStates, setButtonStates) => {
     }
   
 };
-export default ExpButton;
+export default GalleryButton;
