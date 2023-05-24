@@ -12,9 +12,7 @@ const Block = ({blockNum, title, comment, isClaimed, buttonStates, setButtonStat
       <Text fontSize="3xl" style={{fontFamily: 'Century Gothic'}} mb={2} position="relative" top={0} left={0}>{title}</Text>
       <Text mb={4} style={{fontFamily:'Comic Sans MS'}}>{"\"" + comment + "\""}</Text>
       <ChakraProvider theme={theme_pink}>
-        <Button variant="customColor" onClick={GalleryButton(blockNum={blockNum},buttonStates={buttonStates},setButtonStates={setButtonStates})} style={{fontFamily:"Century Gothic"}}>
-          {"Claim"}
-        </Button>
+        <GalleryButton blockNum={blockNum} buttonStates={buttonStates} setButtonStates={setButtonStates}/>
       </ChakraProvider>
       
     </Box>

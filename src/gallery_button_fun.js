@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
+import { Button } from '@chakra-ui/react';
 import Web3 from 'web3';
 
 // 你的合约的ABI
 
 
-const GalleryButton = async (blockNum, buttonStates, setButtonStates) => {
-  
+const GalleryButton = ({blockNum, buttonStates, setButtonStates}) => {
+    console.log("1",buttonStates);
     const contractABI = [
       {
        "inputs": [],
@@ -430,58 +431,67 @@ const GalleryButton = async (blockNum, buttonStates, setButtonStates) => {
     const contractAddress = "0x5Ae1ECCc15312128cDd2dEEe2628a2c72751C531";
     
     // switch to the Goerli
-    if (window.ethereum.chainId !== '0x5') {
-      try {
-          // Request user to switch to Goerli testnet
-          await window.ethereum.request({
-              method: 'wallet_switchEthereumChain',
-              params: [{ chainId: '0x5' }], 
-          });
-      } catch (switchError) {
-        // This error code means the user needs to add the Goerli network to MetaMask
-        if (switchError.code === 4902) {
-            try {
-                await window.ethereum.request({
-                    method: 'wallet_addEthereumChain',
-                    params: [{
-                        chainId: '0x5',
-                        rpcUrl: 'https://goerli.infura.io/v3/b573ced19e26400e8dca7b928505f329',
-                        //... any other params you need to set
-                    }],
-                });
-            } catch (addError) {
-                // handle "add" error
-            }
+    const handleButtonClick = async() =>{
+      console.log("2",buttonStates);
+      if (window.ethereum.chainId !== '0x5') {
+        try {
+            // Request user to switch to Goerli testnet
+            await window.ethereum.request({
+                method: 'wallet_switchEthereumChain',
+                params: [{ chainId: '0x5' }], 
+            });
+        } catch (switchError) {
+          // This error code means the user needs to add the Goerli network to MetaMask
+          if (switchError.code === 4902) {
+              try {
+                  await window.ethereum.request({
+                      method: 'wallet_addEthereumChain',
+                      params: [{
+                          chainId: '0x5',
+                          rpcUrl: 'https://goerli.infura.io/v3/b573ced19e26400e8dca7b928505f329',
+                          //... any other params you need to set
+                      }],
+                  });
+              } catch (addError) {
+                  // handle "add" error
+              }
+          }
+          // handle other "switch" errors
         }
-        // handle other "switch" errors
+      }
+      const web3Instance = new Web3(window.ethereum);
+      const contractInstance = new web3Instance.eth.Contract(contractABI, contractAddress);
+
+      if (!web3Instance || !contractInstance) return;
+
+      const accounts = await web3Instance.eth.getAccounts();
+      if (accounts.length === 0) {
+        alert('Please connect to MetaMask!');
+        return;
+      }
+
+      // send transaction
+      try{
+        await contractInstance.methods.mint(accounts[0]).send({ from: accounts[0] });
+        console.log("3",buttonStates)
+        let newbuttonStates = [...buttonStates];
+        newbuttonStates[blockNum] = 1;
+        setButtonStates(newbuttonStates);
+      } catch (error) {
+        // 捕捉到异常错误    
+        // 判断异常错误是否为用户取消交易的错误
+        if (error.code === 4001) {
+          console.log("transaction delete!")        
+        } else {
+          console.error(error);
+        }
       }
     }
-    const web3Instance = new Web3(window.ethereum);
-    const contractInstance = new web3Instance.eth.Contract(contractABI, contractAddress);
 
-    if (!web3Instance || !contractInstance) return;
-
-    const accounts = await web3Instance.eth.getAccounts();
-    if (accounts.length === 0) {
-      alert('Please connect to MetaMask!');
-      return;
-    }
-
-    // send transaction
-    try{
-      await contractInstance.methods.mint(accounts[0]).send({ from: accounts[0] });
-      var newbuttonStates = buttonStates;
-      newbuttonStates[blockNum] = 1;
-      setButtonStates(newbuttonStates);
-    } catch (error) {
-      // 捕捉到异常错误    
-      // 判断异常错误是否为用户取消交易的错误
-      if (error.code === 4001) {
-        console.log("transaction delete!")        
-      } else {
-        console.error(error);
-      }
-    }
+    return(
+    <Button variant="customColor" onClick={handleButtonClick} style={{fontFamily:"Century Gothic"}}>
+    {"Claim"}
+  </Button>)
   
 };
 export default GalleryButton;
