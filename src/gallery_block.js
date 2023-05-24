@@ -1,5 +1,5 @@
 import { Box, Text, Button, ChakraProvider, Image} from "@chakra-ui/react";
-import ExpButton from "./experience_button_fun";
+import ExpButton from "./gallery_button_fun";
 import theme_pink from "./color/theme_pink"
 import theme_blue from "./color/theme_blue"
 

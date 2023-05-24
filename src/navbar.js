@@ -16,8 +16,8 @@ export default function Navbar({account, setAccount, loggedIn, setLoggedIn, butt
                         <Image src={mylogo} height={"60px"}></Image>
                     </Box>
                     <Center>
-                        <button style={{ marginRight: '20px' }} onClick={() => navigate('/experience')}>
-                            <Text fontSize={"2xl"}> Experience </Text>
+                        <button style={{ marginRight: '20px' }} onClick={() => navigate('/gallery')}>
+                            <Text fontSize={"2xl"}> Gallery </Text>
                         </button>
 
                         {/* <Divider marginRight={"20px"} orientation="vertical" borderWidth={"2px"} borderColor={"red.300"} /> */}

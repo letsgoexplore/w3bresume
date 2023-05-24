@@ -13,7 +13,6 @@ import React, { useState } from 'react'
 import { Box, Button } from '@chakra-ui/react'
 import JobBlockButtonBadge from './job_block_button_badge'
 import CVSendBox from "./send_cv";
-import theme_pink from './color/theme_pink';
 
 function JobBlockButton({companyname, sbtRequired, buttonStates, isEligible}) {
     const initialFocusRef = React.useRef();   
@@ -74,4 +73,4 @@ function JobBlockButton({companyname, sbtRequired, buttonStates, isEligible}) {
     )
   }
 
-  export default JobBlockButton
+  export default JobBlockButton 

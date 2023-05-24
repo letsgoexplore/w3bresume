@@ -46,7 +46,7 @@ const WalletButton = ({account, setAccount, loggedIn, setLoggedIn, buttonStates,
         setAccount(accounts[0]);
         updateState(accounts[0])
       } catch (error) {
-        console.error("User denied account access");
+        console.error("account conncet error:%s", error);
       }
     } else {
       console.log("Non-Ethereum browser detected. You should consider trying MetaMask!");
