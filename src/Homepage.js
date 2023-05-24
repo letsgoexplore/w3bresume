@@ -4,10 +4,10 @@ import HomepageImg1 from "./asset/homepage1.png"
 import HomepageImg2 from "./asset/homepage2.png"
 import HomepageImg3 from "./asset/homepage3.png"
 
-export default function Homepage () {
+export default function Homepage ({account, setAccount, loggedIn, setLoggedIn, buttonStates, setButtonStates}) {
     return (
         <Box bg="#fdefef">
-          <Navbar />
+          <Navbar account={account} setAccount={setAccount} loggedIn={loggedIn} setLoggedIn={setLoggedIn} buttonStates={buttonStates} setButtonStates={setButtonStates} />
     
           <Flex align="center" justify="center" bgImage={`url(${HomepageImg1})`} h="600px" bgSize="cover" bgPosition="center">
             {/* <Box textAlign="center" py={8} color={"red.500"}>

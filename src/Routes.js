@@ -11,7 +11,7 @@ const AppRoutes = () => {
     return (
         <Router>
             <Routes>
-                <Route path='/' element={<Homepage />} />
+                <Route path='/' element={<Homepage account={account} setAccount={setAccount} loggedIn={loggedIn} setLoggedIn={setLoggedIn} buttonStates={buttonStates} setButtonStates={setButtonStates}/>} />
                 <Route path="/experience" element={<Experience account={account} setAccount={setAccount} loggedIn={loggedIn} setLoggedIn={setLoggedIn} buttonStates={buttonStates} setButtonStates={setButtonStates}/>} />
                 <Route path="/job" element={<Job account={account} setAccount={setAccount} loggedIn={loggedIn} setLoggedIn={setLoggedIn} buttonStates={buttonStates} setButtonStates={setButtonStates}/>} />
             </Routes>

@@ -10,10 +10,10 @@ const Experience = ({account, setAccount, loggedIn, setLoggedIn, buttonStates, s
             <Box>
                 <Navbar account={account} setAccount={setAccount} loggedIn={loggedIn} setLoggedIn={setLoggedIn} buttonStates={buttonStates} setButtonStates={setButtonStates} />
                 <Grid templateColumns="repeat(2, 1fr)" gap="6" p="6">
-                    <Block title={"NFT KOL"} comment={"For the great advocator of NFT"} isClaimed={buttonStates[0]} />
-                    <Block title={"Bewater OG"} comment={"Builder&Contributor of Bewater"} isClaimed={buttonStates[1]} />
-                    <Block title={"Wales"} comment={"To whom possess more than 32 ETH"} isClaimed={buttonStates[2]} />
-                    <Block title={"Blockchain Researcher"} comment={"Creator of the future"} isClaimed={buttonStates[3]} />
+                    <Block blockNum={0} title={"NFT KOL"} comment={"For the great advocator of NFT"} isClaimed={buttonStates[0]} buttonStates={buttonStates} setButtonStates={setButtonStates}/>
+                    <Block blockNum={1} title={"Bewater OG"} comment={"Builder&Contributor of Bewater"} isClaimed={buttonStates[1]} buttonStates={buttonStates} setButtonStates={setButtonStates}/>
+                    <Block blockNum={2} title={"Wales"} comment={"To whom possess more than 32 ETH"} isClaimed={buttonStates[2]} buttonStates={buttonStates} setButtonStates={setButtonStates}/>
+                    <Block blockNum={3} title={"Blockchain Researcher"} comment={"Creator of the future"} isClaimed={buttonStates[3]} buttonStates={buttonStates} setButtonStates={setButtonStates}/>
                 </Grid>
             </Box>
         </div>

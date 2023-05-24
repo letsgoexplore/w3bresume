@@ -4,7 +4,7 @@ import Web3 from 'web3';
 // 你的合约的ABI
 
 
-const ExpButton = async () => {
+const ExpButton = async (blockNum, buttonStates, setButtonStates) => {
   
     const contractABI = [
       {
@@ -470,6 +470,9 @@ const ExpButton = async () => {
     // send transaction
     try{
       await contractInstance.methods.mint(accounts[0]).send({ from: accounts[0] });
+      var newbuttonStates = buttonStates;
+      newbuttonStates[blockNum] = 1;
+      setButtonStates(newbuttonStates);
     } catch (error) {
       // 捕捉到异常错误    
       // 判断异常错误是否为用户取消交易的错误
